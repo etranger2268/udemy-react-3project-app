@@ -31,15 +31,19 @@ npm run dev
 npm run build
 ```
 
-### 4. フォーマット
+### 4. 本番用プレビュー
+
+ビルドされたアプリケーションをローカルでプレビューします。  
+このコマンドを実行する前に、`npm run build`を実行する必要があります。
+
+```bash
+npm run preview
+```
+
+### 5. フォーマット
 
 [Biome](https://biomejs.dev/)を使ってコードをフォーマットします。
 
 ```bash
 npm run format
 ```
-
-## プレビュー
-
-`src/index.html`をブラウザで開いてください。  
-正しく表示するためには、事前に`npm run build`を実行する必要があります。
