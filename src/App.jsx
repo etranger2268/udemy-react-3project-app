@@ -1,6 +1,6 @@
-import { Fragment, useEffect, useState } from 'react';
-import { getAllPokemon, getPokemon } from './utils/pokemon';
+import { useEffect, useState } from 'react';
 import Card from './components/Card/Card';
+import { getAllPokemon, getPokemon } from './utils/pokemon';
 
 export default function App() {
   const initialURL = 'https://pokeapi.co/api/v2/pokemon/';
@@ -34,11 +34,13 @@ export default function App() {
 
   return (
     <div>
-      {loading ? <h1>ロード中</h1> : (
+      {loading ? (
+        <h1>ロード中</h1>
+      ) : (
         <div>
-          {pokemonData.map(pokemon =>
+          {pokemonData.map((pokemon) => (
             <Card key={pokemon.id} pokemon={pokemon} />
-          )}
+          ))}
         </div>
       )}
     </div>

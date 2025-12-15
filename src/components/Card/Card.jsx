@@ -1,3 +1,29 @@
-export default function Card({ pokrmon }) {
-  return <div>Card</div>;
+export default function Card({ pokemon }) {
+  return (
+    <div>
+      <div>
+        <img src={pokemon.sprites.front_default} alt="" />
+      </div>
+      <h3>{pokemon.name}</h3>
+      <div>
+        <div>タイプ</div>
+        {pokemon.types.map((type) => (
+          <div key={type.slot}>
+            <span>{type.type.name}</span>
+          </div>
+        ))}
+      </div>
+      <div>
+        <div>
+          <p>重さ：{pokemon.weight}</p>
+        </div>
+        <div>
+          <p>高さ：{pokemon.height}</p>
+        </div>
+        <div>
+          <p>アビリティ：{pokemon.abilities[0].ability.name}</p>
+        </div>
+      </div>
+    </div>
+  );
 }
