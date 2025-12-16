@@ -38,7 +38,7 @@ export default function App() {
       {loading ? (
         <h1>ロード中</h1>
       ) : (
-        <div className="grid grid-cols-3 gap-5 mt-5">
+        <div className="grid grid-cols-3 gap-5 mt-5 place-items-center">
           {pokemonData.map((pokemon) => (
             <Card key={pokemon.id} pokemon={pokemon} />
           ))}

@@ -1,6 +1,6 @@
 export default function Card({ pokemon }) {
   return (
-    <div>
+    <div className="w-2xs shadow-xl rounded-lg bg-white">
       <div>
         <img
           src={pokemon.sprites.front_default}
@@ -8,7 +8,7 @@ export default function Card({ pokemon }) {
           className="block mx-auto"
         />
       </div>
-      <h3>{pokemon.name}</h3>
+      <h3 className="p-0 text-2xl font-black mb-2.5 mt-0">{pokemon.name}</h3>
       <div>
         <div>タイプ</div>
         {pokemon.types.map((type) => (
@@ -17,7 +17,7 @@ export default function Card({ pokemon }) {
           </div>
         ))}
       </div>
-      <div>
+      <div className="text-center">
         <div>
           <p>重さ：{pokemon.weight}</p>
         </div>
