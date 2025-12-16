@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Card from './components/Card/Card';
 import { getAllPokemon, getPokemon } from './utils/pokemon';
+import Navbar from './components/Navbar/Navbar';
 
 export default function App() {
   const initialURL = 'https://pokeapi.co/api/v2/pokemon/';
@@ -34,16 +35,19 @@ export default function App() {
   console.log(pokemonData);
 
   return (
-    <div className="text-center w-full h-screen">
-      {loading ? (
-        <h1>ロード中</h1>
-      ) : (
-        <div className="grid grid-cols-3 gap-5 mt-5 place-items-center">
-          {pokemonData.map((pokemon) => (
-            <Card key={pokemon.id} pokemon={pokemon} />
-          ))}
-        </div>
-      )}
-    </div>
+    <Fragment>
+      <Navbar />
+      <div className="text-center w-full h-screen">
+        {loading ? (
+          <h1>ロード中</h1>
+        ) : (
+          <div className="grid grid-cols-3 gap-5 mt-5 place-items-center">
+            {pokemonData.map((pokemon) => (
+              <Card key={pokemon.id} pokemon={pokemon} />
+            ))}
+          </div>
+        )}
+      </div>
+    </Fragment>
   );
 }
