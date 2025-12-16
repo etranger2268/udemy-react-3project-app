@@ -8,7 +8,8 @@ export default function App() {
 
   const [loading, setLoading] = useState(true);
   const [pokemonData, setPokemonData] = useState([]);
-  const [nextURL, setNextURL] = useState('');
+  const [prevURL, setPrevURL] = useState(null);
+  const [nextURL, setNextURL] = useState(null);
 
   // biome-ignore lint: 依存配列にloadPokemonは不要
   useEffect(() => {
@@ -16,6 +17,7 @@ export default function App() {
       // すべてのポケモンデータを取得
       const res = await getAllPokemon(initialURL);
       setNextURL(res.next);
+      setPrevURL(res.previous)
 
       // 各ポケモンのデータを取得
       await loadPokemon(res.results);
@@ -34,11 +36,22 @@ export default function App() {
     setPokemonData(_pokemonData);
   };
 
-  const handlePrevPage = () => {};
+  const handlePrevPage = async () => {
+    if (!prevURL) return;
+    setLoading(true);
+    const data = await getAllPokemon(prevURL);
+    setNextURL(data.next);
+    setPrevURL(data.previous);
+    await loadPokemon(data.results);
+    setLoading(false);
+  };
+
   const handleNextPage = async () => {
+    if (!nextURL) return;
     setLoading(true);
     const data = await getAllPokemon(nextURL);
     setNextURL(data.next);
+    setPrevURL(data.previous);
     await loadPokemon(data.results);
     setLoading(false);
   };
