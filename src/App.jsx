@@ -19,7 +19,7 @@ export default function App() {
 
   return (
     <div className="flex w-full h-screen overflow-hidden text-base">
-      <Sidebar onAddNote={onAddNote} />
+      <Sidebar notes={notes} onAddNote={onAddNote} />
       <Main />
     </div>
   );
