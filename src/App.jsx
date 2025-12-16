@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar';
 
 export default function App() {
   const [notes, setNotes] = useState([]);
+  const [activeNote, setActiveNote] = useState(null);
   const onAddNote = () => {
     console.log('ノートが追加されました。');
     const newNote = {
@@ -25,7 +26,13 @@ export default function App() {
 
   return (
     <div className="flex w-full h-screen overflow-hidden text-base">
-      <Sidebar notes={notes} onAddNote={onAddNote} onDeleteNote={onDeleteNote} />
+      <Sidebar
+        notes={notes}
+        onAddNote={onAddNote}
+        onDeleteNote={onDeleteNote}
+        activeNote={activeNote}
+        setActiveNote={setActiveNote}
+      />
       <Main />
     </div>
   );

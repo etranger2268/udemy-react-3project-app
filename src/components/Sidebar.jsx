@@ -1,4 +1,4 @@
-export default function Sidebar({ notes, onAddNote, onDeleteNote }) {
+export default function Sidebar({ notes, onAddNote, onDeleteNote, activeNote, setActiveNote }) {
   return (
     <div className="w-3/10 h-screen border-r border-gray-200">
       <div className="flex justify-between p-6">
@@ -13,7 +13,14 @@ export default function Sidebar({ notes, onAddNote, onDeleteNote }) {
       </div>
       <div className="h-[calc(100vh-78px)] overflow-scroll">
         {notes.map((note) => (
-          <div key={note.id} className="p-6 cursor-pointer transition-all hover:bg-gray-100">
+          <button
+            type="button"
+            key={note.id}
+            className={`w-full text-left p-6 cursor-pointer transition-all hover:bg-gray-100 ${
+              note.id === activeNote && 'bg-gray-100'
+            }`}
+            onClick={() => setActiveNote(note.id)}
+          >
             <div className="flex justify-between">
               <strong>{note.title}</strong>
               <button
@@ -31,7 +38,7 @@ export default function Sidebar({ notes, onAddNote, onDeleteNote }) {
                 minute: '2-digit',
               })}
             </small>
-          </div>
+          </button>
         ))}
       </div>
     </div>
