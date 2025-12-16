@@ -1,3 +1,11 @@
+import Main from './components/Main';
+import Sidebar from './components/Sidebar';
+
 export default function App() {
-  return <h1 className="text-red-500 text-2xl">Hello, App!</h1>;
+  return (
+    <div className="flex w-full h-screen overflow-hidden text-base">
+      <Sidebar />
+      <Main />
+    </div>
+  );
 }
