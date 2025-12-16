@@ -38,6 +38,7 @@ export default function App() {
   const handleNextPage = async () => {
     setLoading(true);
     const data = await getAllPokemon(nextURL);
+    setNextURL(data.next);
     await loadPokemon(data.results);
     setLoading(false);
   };
