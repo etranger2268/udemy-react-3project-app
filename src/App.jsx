@@ -18,9 +18,14 @@ export default function App() {
     console.log(notes);
   };
 
+  const onDeleteNote = (id) => {
+    const newNotes = notes.filter((note) => note.id !== id);
+    setNotes(newNotes);
+  };
+
   return (
     <div className="flex w-full h-screen overflow-hidden text-base">
-      <Sidebar notes={notes} onAddNote={onAddNote} />
+      <Sidebar notes={notes} onAddNote={onAddNote} onDeleteNote={onDeleteNote} />
       <Main />
     </div>
   );

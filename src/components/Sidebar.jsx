@@ -1,4 +1,4 @@
-export default function Sidebar({ notes, onAddNote }) {
+export default function Sidebar({ notes, onAddNote, onDeleteNote }) {
   return (
     <div className="w-3/10 h-screen border-r border-gray-200">
       <div className="flex justify-between p-6">
@@ -19,6 +19,7 @@ export default function Sidebar({ notes, onAddNote }) {
               <button
                 type="button"
                 className="border-none bg-none text-blue-400 m-0 p-0 text-base cursor-pointer"
+                onClick={() => onDeleteNote(note.id)}
               >
                 削除
               </button>
