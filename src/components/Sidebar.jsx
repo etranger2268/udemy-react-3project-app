@@ -1,10 +1,11 @@
-export default function Sidebar() {
+export default function Sidebar({ onAddNote }) {
   return (
     <div className="w-3/10 h-screen border-r border-gray-200">
       <div className="flex justify-between p-6">
         <h1 className="m-0 font-black text-3xl">ノート</h1>
         <button
           type="button"
+          onClick={onAddNote}
           className="border-none bg-none text-blue-400 m-0 p-0 text-base cursor-pointer"
         >
           追加
