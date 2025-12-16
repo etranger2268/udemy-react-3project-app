@@ -8,6 +8,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [pokemonData, setPokemonData] = useState([]);
 
+  // biome-ignore lint: 依存配列にloadPokemonは不要
   useEffect(() => {
     const fetchPokemon = async () => {
       // すべてのポケモンデータを取得
@@ -23,7 +24,7 @@ export default function App() {
   const loadPokemon = async (data) => {
     const _pokemonData = await Promise.all(
       data.map(async (pokemon) => {
-        const pokemonRecord = await getPokemon(pokemon.url);
+        const pokemonRecord = getPokemon(pokemon.url);
         return pokemonRecord;
       }),
     );
@@ -33,11 +34,11 @@ export default function App() {
   console.log(pokemonData);
 
   return (
-    <div>
+    <div className="text-center w-full h-screen">
       {loading ? (
         <h1>ロード中</h1>
       ) : (
-        <div>
+        <div className="grid grid-cols-3 gap-5 mt-5">
           {pokemonData.map((pokemon) => (
             <Card key={pokemon.id} pokemon={pokemon} />
           ))}

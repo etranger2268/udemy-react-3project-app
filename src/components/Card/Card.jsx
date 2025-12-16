@@ -2,7 +2,11 @@ export default function Card({ pokemon }) {
   return (
     <div>
       <div>
-        <img src={pokemon.sprites.front_default} alt="" />
+        <img
+          src={pokemon.sprites.front_default}
+          alt={`${pokemon.name}の画像`}
+          className="block mx-auto"
+        />
       </div>
       <h3>{pokemon.name}</h3>
       <div>
