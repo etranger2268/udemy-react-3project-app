@@ -17,7 +17,7 @@ export default function App() {
       // すべてのポケモンデータを取得
       const res = await getAllPokemon(initialURL);
       setNextURL(res.next);
-      setPrevURL(res.previous)
+      setPrevURL(res.previous);
 
       // 各ポケモンのデータを取得
       await loadPokemon(res.results);
@@ -69,9 +69,21 @@ export default function App() {
                 <Card key={pokemon.id} pokemon={pokemon} />
               ))}
             </div>
-            <div>
-              <button type="button" onClick={handlePrevPage}>前へ</button>
-              <button type="button" onClick={handleNextPage}>次へ</button>
+            <div className="py-3.5 px-0 flex justify-center items-center gap-5">
+              <button
+                type="button"
+                onClick={handlePrevPage}
+                className="bg-blue-400 shadow-lg rounded-lg text-white py-3 px-6 cursor-pointer hover:translate-y-1 hover:transition-all hover:shadow-none"
+              >
+                前へ
+              </button>
+              <button
+                type="button"
+                onClick={handleNextPage}
+                className="bg-blue-400 shadow-lg rounded-lg text-white py-3 px-6 cursor-pointer hover:translate-y-1 hover:transition-all hover:shadow-none"
+              >
+                次へ
+              </button>
             </div>
           </Fragment>
         )}
