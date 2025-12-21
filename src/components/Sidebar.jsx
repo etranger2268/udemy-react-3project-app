@@ -33,10 +33,7 @@ export default function Sidebar({ notes, onAddNote, onDeleteNote, activeNote, se
             </div>
             <p className="my-2.5 mx-0">{note.content}</p>
             <small className="text-gray-500">
-              {new Date(note.modDate).toLocaleDateString('ja-JP', {
-                hour: '2-digit',
-                minute: '2-digit',
-              })}
+              {new Date(note.modDate).toLocaleString('ja-JP')}
             </small>
           </button>
         ))}

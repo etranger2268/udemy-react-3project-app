@@ -29,10 +29,12 @@ export default function App() {
   const onUpdateNotes = (updatedNote) =>
     setNotes((prev) => prev.map((note) => (note.id === updatedNote.id ? updatedNote : note)));
 
+  const sortedNotes = notes.toSorted((a, b) => b.modDate - a.modDate);
+
   return (
     <div className="flex w-full h-screen overflow-hidden text-base">
       <Sidebar
-        notes={notes}
+        notes={sortedNotes}
         onAddNote={onAddNote}
         onDeleteNote={onDeleteNote}
         activeNote={activeNote}
