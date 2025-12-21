@@ -26,6 +26,8 @@ export default function App() {
 
   const getActiveNote = () => notes.find((note) => note.id === activeNote);
 
+  const onUpdateNotes = () => {}
+
   return (
     <div className="flex w-full h-screen overflow-hidden text-base">
       <Sidebar
@@ -35,7 +37,7 @@ export default function App() {
         activeNote={activeNote}
         setActiveNote={setActiveNote}
       />
-      <Main activeNote={getActiveNote()} />
+      <Main activeNote={getActiveNote()} onUpdateNotes={onUpdateNotes} />
     </div>
   );
 }

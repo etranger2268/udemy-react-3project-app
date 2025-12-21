@@ -1,4 +1,8 @@
-export default function Main({ activeNote }) {
+export default function Main({ activeNote, onUpdateNotes }) {
+  const onEditNote = () => {
+    onUpdateNotes();
+  };
+
   if (!activeNote) {
     return (
       <div className="w-7/10 h-screen leading-[100vh] text-center text-3xl text-gray-600">
@@ -12,10 +16,15 @@ export default function Main({ activeNote }) {
       <div className="h-[50vh] p-6">
         <input
           type="text"
+          id="title"
+          value={activeNote.title}
+          onChange={(e) => onEditNote('title', e.target.value)}
           className="block border border-gray-300 mb-5 w-full p-1.5 resize-none text-xl h-12"
         />
         <textarea
-          id=""
+          id="content"
+          value={activeNote.content}
+          onChange={(e) => onEditNote('content', e.target.value)}
           placeholder="ノート内容を記入"
           className="block border border-gray-300 mb-5 w-full h-[calc(50vh-130px)] p-1.5 resize-none text-base"
         />
