@@ -26,7 +26,8 @@ export default function App() {
 
   const getActiveNote = () => notes.find((note) => note.id === activeNote);
 
-  const onUpdateNotes = () => {}
+  const onUpdateNotes = (updatedNote) =>
+    setNotes((prev) => prev.map((note) => (note.id === updatedNote.id ? updatedNote : note)));
 
   return (
     <div className="flex w-full h-screen overflow-hidden text-base">

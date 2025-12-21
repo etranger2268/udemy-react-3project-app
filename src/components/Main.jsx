@@ -1,7 +1,10 @@
 export default function Main({ activeNote, onUpdateNotes }) {
-  const onEditNote = () => {
-    onUpdateNotes();
-  };
+  const onEditNote = (key, value) =>
+    onUpdateNotes({
+      ...activeNote,
+      [key]: value,
+      modDate: Date.now(),
+    });
 
   if (!activeNote) {
     return (
@@ -18,13 +21,13 @@ export default function Main({ activeNote, onUpdateNotes }) {
           type="text"
           id="title"
           value={activeNote.title}
-          onChange={(e) => onEditNote('title', e.target.value)}
+          onChange={(e) => onEditNote(e.target.id, e.target.value)}
           className="block border border-gray-300 mb-5 w-full p-1.5 resize-none text-xl h-12"
         />
         <textarea
           id="content"
           value={activeNote.content}
-          onChange={(e) => onEditNote('content', e.target.value)}
+          onChange={(e) => onEditNote(e.target.id, e.target.value)}
           placeholder="ノート内容を記入"
           className="block border border-gray-300 mb-5 w-full h-[calc(50vh-130px)] p-1.5 resize-none text-base"
         />
