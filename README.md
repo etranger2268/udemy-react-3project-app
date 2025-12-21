@@ -7,6 +7,7 @@
 - [Vite](https://ja.vite.dev/)
 - [React](https://ja.react.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [Firebase](https://firebase.google.com/)
 
 ## 開発
 
@@ -16,7 +17,21 @@
 npm install
 ```
 
-### 2. 開発サーバーの起動
+### 2. 環境変数の設定
+
+Firebaseを使用するには、環境変数を設定する必要があります。  
+`.env.local`ファイルを作成し、以下の変数を設定してください。`.env.example`を参考にしてください。
+
+``` code
+VITE_FIREBASE_API_KEY="YOUR_API_KEY"
+VITE_FIREBASE_AUTH_DOMAIN="YOUR_AUTH_DOMAIN"
+VITE_FIREBASE_PROJECT_ID="YOUR_PROJECT_ID"
+VITE_FIREBASE_STORAGE_BUCKET="YOUR_STORAGE_BUCKET"
+VITE_FIREBASE_MESSAGING_SENDER_ID="YOUR_MESSAGING_SENDER_ID"
+VITE_FIREBASE_APP_ID="YOUR_APP_ID"
+```
+
+### 3. 開発サーバーの起動
 
 Vite 開発サーバーを起動します。  
 ファイルの変更を監視し、自動的にブラウザを更新します。
@@ -25,13 +40,13 @@ Vite 開発サーバーを起動します。
 npm run dev
 ```
 
-### 3. 本番用ビルド
+### 4. 本番用ビルド
 
 ```bash
 npm run build
 ```
 
-### 4. 本番用プレビュー
+### 5. 本番用プレビュー
 
 ビルドされたアプリケーションをローカルでプレビューします。  
 このコマンドを実行する前に、`npm run build`を実行する必要があります。
@@ -40,7 +55,7 @@ npm run build
 npm run preview
 ```
 
-### 5. フォーマット
+### 6. フォーマット
 
 [Biome](https://biomejs.dev/)を使ってコードをフォーマットします。
 
