@@ -1,3 +1,4 @@
+import Markdown from 'react-markdown';
 export default function Main({ activeNote, onUpdateNotes }) {
   const onEditNote = (key, value) =>
     onUpdateNotes({
@@ -33,7 +34,9 @@ export default function Main({ activeNote, onUpdateNotes }) {
         />
         <div className="h-[50vh] overflow-y-scroll bg-gray-50">
           <h2 className="font-black text-2xl pt-6 px-6 m-0">{activeNote.title}</h2>
-          <div className="leading-8 pb-6 px-6">{activeNote.content}</div>
+          <div className="leading-8 pb-6 px-6">
+            <Markdown>{activeNote.content}</Markdown>
+          </div>
         </div>
       </div>
     </div>
