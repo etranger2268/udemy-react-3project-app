@@ -24,6 +24,8 @@ export default function App() {
     setNotes(newNotes);
   };
 
+  const getActiveNote = () => notes.find((note) => note.id === activeNote);
+
   return (
     <div className="flex w-full h-screen overflow-hidden text-base">
       <Sidebar
@@ -33,7 +35,7 @@ export default function App() {
         activeNote={activeNote}
         setActiveNote={setActiveNote}
       />
-      <Main />
+      <Main activeNote={getActiveNote()} />
     </div>
   );
 }

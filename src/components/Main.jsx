@@ -1,4 +1,12 @@
-export default function Main() {
+export default function Main({ activeNote }) {
+  if (!activeNote) {
+    return (
+      <div className="w-7/10 h-screen leading-[100vh] text-center text-3xl text-gray-600">
+        ノートが選択されていません
+      </div>
+    );
+  }
+
   return (
     <div className="w-7/10 h-screen">
       <div className="h-[50vh] p-6">
@@ -12,8 +20,8 @@ export default function Main() {
           className="block border border-gray-300 mb-5 w-full h-[calc(50vh-130px)] p-1.5 resize-none text-base"
         />
         <div className="h-[50vh] overflow-y-scroll bg-gray-50">
-          <h2 className="font-black text-2xl pt-6 px-6 m-0">タイトル</h2>
-          <div className="leading-8 pb-6 px-6">ノート内容</div>
+          <h2 className="font-black text-2xl pt-6 px-6 m-0">{activeNote.title}</h2>
+          <div className="leading-8 pb-6 px-6">{activeNote.content}</div>
         </div>
       </div>
     </div>
