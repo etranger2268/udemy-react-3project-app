@@ -9,6 +9,7 @@
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Firebase](https://firebase.google.com/)
 - [react-router-dom](https://reactrouter.com/en/main)
+- [Font Awesome](https://fontawesome.com/)
 
 ## 開発
 
