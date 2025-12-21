@@ -11,6 +11,11 @@ export default function App() {
     localStorage.setItem('notes', JSON.stringify(notes));
   }, [notes]);
 
+  // biome-ignore lint: "execute only the first time is is displayed"
+  useEffect(() => {
+    setActiveNote(sortedNotes[0]?.id ?? null);
+  }, []);
+
   const onAddNote = () => {
     console.log('ノートが追加されました。');
     const newNote = {
