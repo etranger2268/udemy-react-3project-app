@@ -1,10 +1,12 @@
 import { addDoc, collection } from 'firebase/firestore';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase/firebase.js';
 
 export default function CreatePost() {
   const initialPost = { title: '', content: '' };
   const [post, setPost] = useState(initialPost);
+  const navigate = useNavigate();
 
   const handleChangePost = (key, value) =>
     setPost((prev) => ({
@@ -21,6 +23,7 @@ export default function CreatePost() {
         id: auth.currentUser.uid,
       },
     });
+    navigate('/');
   };
 
   return (
