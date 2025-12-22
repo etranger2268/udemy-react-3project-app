@@ -1,4 +1,6 @@
+import { addDoc, collection } from 'firebase/firestore';
 import { useState } from 'react';
+import { auth, db } from '../firebase/firebase.js';
 
 export default function CreatePost() {
   const initialPost = { title: '', content: '' };
@@ -10,7 +12,16 @@ export default function CreatePost() {
       [key]: value,
     }));
 
-  const handleCreatePost = () => console.log(post);
+  const handleCreatePost = async () => {
+    await addDoc(collection(db, 'posts'), {
+      title: post.title,
+      content: post.content,
+      author: {
+        username: auth.currentUser.displayName,
+        id: auth.currentUser.uid,
+      },
+    });
+  };
 
   return (
     <div className="flex justify-center items-center h-[90vh]">
