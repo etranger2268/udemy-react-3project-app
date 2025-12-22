@@ -10,7 +10,7 @@ export default function App() {
   const [isAuth, setIsAuth] = useState(false);
   return (
     <Router>
-      <Navbar />
+      <Navbar isAuth={isAuth} />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/create-post" element={<CreatePost />}></Route>
