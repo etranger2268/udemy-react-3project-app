@@ -1,6 +1,6 @@
 import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import { db } from '../firebase/firebase';
+import { auth, db } from '../firebase/firebase';
 
 export default function Home() {
   const [postList, setPostList] = useState([]);
@@ -29,13 +29,15 @@ export default function Home() {
           <div className="h-auto wrap-break-word max-h-100 w-full">{post.content}</div>
           <div className="flex items-center justify-between mt-4">
             <h3 className="font-semibold">@{post.author.username}</h3>
-            <button
-              type="button"
-              onClick={() => handleDelete(post.id)}
-              className="bg-blue-400 py-0.5 px-2 text-white transition-all duration-300 hover:bg-blue-500"
-            >
-              削除
-            </button>
+            {post.author.id === auth.currentUser?.uid && (
+              <button
+                type="button"
+                onClick={() => handleDelete(post.id)}
+                className="bg-blue-400 py-0.5 px-2 text-white transition-all duration-300 hover:bg-blue-500"
+              >
+                削除
+              </button>
+            )}
           </div>
         </div>
       ))}
