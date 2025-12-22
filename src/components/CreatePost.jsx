@@ -1,12 +1,17 @@
 import { addDoc, collection } from 'firebase/firestore';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase/firebase.js';
 
-export default function CreatePost() {
+export default function CreatePost({ isAuth }) {
   const initialPost = { title: '', content: '' };
   const [post, setPost] = useState(initialPost);
   const navigate = useNavigate();
+
+  // biome-ignore lint: "execute only the first time it is displayed"
+  useEffect(() => {
+    if (!isAuth) navigate('/login');
+  }, []);
 
   const handleChangePost = (key, value) =>
     setPost((prev) => ({

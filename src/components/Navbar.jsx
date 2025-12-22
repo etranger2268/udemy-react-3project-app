@@ -1,5 +1,6 @@
 import { faArrowRightToBracket, faFilePen, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Navbar({ isAuth }) {
@@ -9,22 +10,24 @@ export default function Navbar({ isAuth }) {
         <FontAwesomeIcon icon={faHouse} className="mr-1" />
         ホーム
       </Link>
-      <Link to="/create-post" className="hover:text-blue-500 transition-all duration-300">
-        <FontAwesomeIcon icon={faFilePen} className="mr-1" />
-        記事投稿
-      </Link>
-      {!isAuth ? (
-      <Link to="/login" className="hover:text-blue-500 transition-all duration-300">
-        <FontAwesomeIcon icon={faArrowRightToBracket} className="mr-1" />
-        ログイン
-      </Link>
-      ) : (
-        <Link to="/logout" className="hover:text-blue-500 transition-all duration-300">
-          <FontAwesomeIcon icon={faArrowRightToBracket} className="mr-1" />
-          ログアウト
-        </Link>
-      )}
 
+      {!isAuth ? (
+        <Link to="/login" className="hover:text-blue-500 transition-all duration-300">
+          <FontAwesomeIcon icon={faArrowRightToBracket} className="mr-1" />
+          ログイン
+        </Link>
+      ) : (
+        <Fragment>
+          <Link to="/create-post" className="hover:text-blue-500 transition-all duration-300">
+            <FontAwesomeIcon icon={faFilePen} className="mr-1" />
+            記事投稿
+          </Link>
+          <Link to="/logout" className="hover:text-blue-500 transition-all duration-300">
+            <FontAwesomeIcon icon={faArrowRightToBracket} className="mr-1" />
+            ログアウト
+          </Link>
+        </Fragment>
+      )}
     </nav>
   );
 }

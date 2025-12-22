@@ -7,13 +7,13 @@ import Logout from './components/Logout';
 import Navbar from './components/Navbar';
 
 export default function App() {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(JSON.parse(localStorage.getItem('isAuth')) || false);
   return (
     <Router>
       <Navbar isAuth={isAuth} />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/create-post" element={<CreatePost />}></Route>
+        <Route path="/create-post" element={<CreatePost isAuth={isAuth} />}></Route>
         <Route path="/login" element={<Login setIsAuth={setIsAuth} />}></Route>
         <Route path="/logout" element={<Logout setIsAuth={setIsAuth} />}></Route>
       </Routes>
