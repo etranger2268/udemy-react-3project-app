@@ -1,4 +1,4 @@
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from '../firebase/firebase';
 
@@ -13,6 +13,11 @@ export default function Home() {
     getPosts();
   }, []);
 
+  const handleDelete = async (id) => {
+    await deleteDoc(doc(db, 'posts', id));
+    window.location.href = '/';
+  };
+
   return (
     <div className="w-full h-auto flex items-center flex-col p-5">
       {postList.map((post) => (
@@ -26,6 +31,7 @@ export default function Home() {
             <h3 className="font-semibold">@{post.author.username}</h3>
             <button
               type="button"
+              onClick={() => handleDelete(post.id)}
               className="bg-blue-400 py-0.5 px-2 text-white transition-all duration-300 hover:bg-blue-500"
             >
               削除
