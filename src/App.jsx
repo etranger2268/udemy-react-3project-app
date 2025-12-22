@@ -14,8 +14,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/create-post" element={<CreatePost isAuth={isAuth} />}></Route>
-        <Route path="/login" element={<Login setIsAuth={setIsAuth} />}></Route>
-        <Route path="/logout" element={<Logout setIsAuth={setIsAuth} />}></Route>
+        <Route path="/login" element={<Login isAuth={isAuth} setIsAuth={setIsAuth} />}></Route>
+        <Route path="/logout" element={<Logout isAuth={isAuth} setIsAuth={setIsAuth} />}></Route>
       </Routes>
     </Router>
   );
