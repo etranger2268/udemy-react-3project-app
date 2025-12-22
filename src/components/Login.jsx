@@ -1,3 +1,16 @@
+import { auth, provider } from '../firebase/firebase.js';
+
 export default function Login() {
-  return <h1>Login</h1>;
+  const loginInWithGoogle = () => {
+    signInWithPopup(auth, provider).then((result) => {});
+  };
+
+  return (
+    <div>
+      <p>ログインして始める</p>
+      <button type="button" onClick={loginInWithGoogle}>
+        Googleでログイン
+      </button>
+    </div>
+  );
 }
